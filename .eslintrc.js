@@ -1,18 +1,18 @@
 module.exports = {
   env: {
-    browser: true,
+    // browser: true,
     commonjs: true,
-    es2021: true
+    es2022: true
   },
-  extends: ['standard'],
+  extends: ['eslint:recommended'],
   parserOptions: {
     ecmaVersion: 'latest'
   },
   rules: {
-    'linebreak-style': ['error', 'windows'],
-    'no-unused-vars': 'warn',
-    quotes: ['warn', 'single'],
     semi: ['warn', 'never'],
-    'space-before-function-paren': 'never'
+    'linebreak-style': ['error', 'windows'],
+    'no-unused-vars': ['warn', { args: 'none' }],
+    quotes: ['warn', 'single'],
+    'no-undef': 'off'
   }
 }

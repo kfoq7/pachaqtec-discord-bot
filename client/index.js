@@ -1,4 +1,5 @@
 const fs = require('fs')
+const express = require('express')
 const { Client, Intents, Collection } = require('discord.js')
 
 class DiscordBot {
@@ -50,11 +51,24 @@ class DiscordBot {
     })
   }
 
+  keep_alive() {
+    const server = express()
+    server.all('/', (req, res) => {
+      res.send('Result: [OK]')
+    })
+
+    server.listen(3000, () => {
+      console.log('Server is now ready | ' + Date.now())
+    })
+  }
+
   login(token) {
     this.client.commands = new Collection()
     this.client.events = new Collection()
 
     const { events } = this.options
+
+    this.keep_alive()
 
     // load files (commands & events)
     this.handlerCommands(this.client)

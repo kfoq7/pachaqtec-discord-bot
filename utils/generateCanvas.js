@@ -27,8 +27,6 @@ const generateImage = async member => {
     size: av.size
   })
 
-  console.log(avatarURL)
-
   const canvas = Canvas.createCanvas(dim.width, dim.height)
   const ctx = canvas.getContext('2d')
 

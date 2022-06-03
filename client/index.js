@@ -17,15 +17,13 @@ class DiscordBot {
 
   handlerCommands(client) {
     const loadFileCommand = (file, folder) => {
-      const command = folder
-        ? require(`../commands/${folder}/${file}`)
-        : require(`../commands/${file}`)
-
+      const dirs = folder ? `${folder}/${file}` : `${file}`
+      const command = require(`../commands/${dirs}`)
       const commandName = file.split('.').shift()
       client.commands.set(commandName, command)
     }
 
-    fs.readdirSync(`./commands`).forEach(file => {
+    fs.readdirSync('./commands').forEach(file => {
       if (file.endsWith('.js')) {
         loadFileCommand(file)
       } else {

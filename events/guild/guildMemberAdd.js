@@ -1,8 +1,13 @@
-module.exports = (Discord, client, guildMember) => {
+const generateImage = require('../../utils/generateCanvas')
+
+module.exports = async (Discord, client, guildMember) => {
   const memberId = guildMember.user.id
   const channelId = '973771513281003520'
 
-  guildMember.guild.channels.cache.get('973941326791970856').send(`
-		**Hey <@${memberId}> bienvenido a pachaqtec! mantente atento al de canal <#${channelId}>!**
-		`)
+  const img = await generateImage(guildMember)
+
+  guildMember.guild.channels.cache.get('973762868552036382').send({
+    content: `**Hey <@${memberId}> bienvenido/a a pachaqtec!\nmantente atento al de canal de <#${channelId}> para saber de las proximas convocatorias!**`,
+    files: [img]
+  })
 }

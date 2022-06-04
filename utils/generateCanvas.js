@@ -20,7 +20,7 @@ Canvas.registerFont(`${__dirname}/../assets/fonts/MoreSugar-Regular.ttf`, {
 })
 
 const generateImage = async member => {
-  const username = member.username
+  const username = member.user.username
   const avatarURL = member.displayAvatarURL({
     format: 'png',
     dynamic: false,
